@@ -7,8 +7,9 @@ import sys
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Define directory variables
-manifest_dir = os.path.join(os.path.expanduser('~'), '.ollama', 'models', 'manifests', 'registry.ollama.ai')
-blob_dir = os.path.join(os.path.expanduser('~'), '.ollama', 'models', 'blobs')
+models_dir = os.environ.get('OLLAMA_MODELS', os.path.join(os.path.expanduser('~'), '.ollama', 'models'))
+manifest_dir = os.path.join(models_dir, 'manifests', 'registry.ollama.ai')
+blob_dir = os.path.join(models_dir, 'blobs')
 outputModels_dir = os.path.join(current_dir, 'Output')  # Updated to use the current directory
 
 # Print base directories to confirm variables
@@ -218,4 +219,5 @@ def main():
             print("Invalid input. Please enter a number.")
 
 if __name__ == "__main__":
+
     main()
